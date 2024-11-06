@@ -1,0 +1,36 @@
+.folder,
+.file {
+  cursor: pointer;
+}
+
+.folder-icon {
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.folder-content {
+  padding-left: 15px;
+  cursor: pointer;
+}
+
+.selected {
+  background-color: #e0f7fa;
+  width: fit-content;
+}
+
+.context-menu {
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 5px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.context-menu div {
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+.context-menu div:hover {
+  background-color: #f0f0f0;
+}
