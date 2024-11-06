@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useCallback, useRef, useEffect } from "react";
 import { FileType } from "../types";
 
 interface FileProps {
@@ -7,40 +7,40 @@ interface FileProps {
   setSelectedFile: (file: FileType | null) => void;
 }
 
-const File: React.FC<FileProps> = ({ file, selectedFile, setSelectedFile }) => {
+const File: React.FC<FileProps> = React.memo(({ file, selectedFile, setSelectedFile }) => {
   const [showMenu, setShowMenu] = useState(false);
   const [menuPosition, setMenuPosition] = useState({ x: 0, y: 0 });
   const menuRef = useRef<HTMLDivElement | null>(null);
 
   const isSelected = selectedFile === file;
 
-  const handleLeftClick = () => {
-    setSelectedFile(isSelected ? null : file); 
+  const handleLeftClick = useCallback(() => {
+    setSelectedFile(isSelected ? null : file);
     setShowMenu(false);
-  };
+  }, [file, isSelected, setSelectedFile]);
 
-  const handleRightClick = (event: React.MouseEvent) => {
+  const handleRightClick = useCallback((event: React.MouseEvent) => {
     event.preventDefault();
     setMenuPosition({ x: event.pageX, y: event.pageY });
     setSelectedFile(file);
     setShowMenu(true);
-  };
+  }, [file, setSelectedFile]);
 
-  const handleMenuAction = (action: string) => {
+  const handleMenuAction = useCallback((action: string) => {
     console.log(`${action} action on file: ${file.name}`);
     setShowMenu(false);
-  };
+  }, [file]);
 
-  const handleClickOutside = (event: MouseEvent) => {
+  const handleClickOutside = useCallback((event: MouseEvent) => {
     if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
       setShowMenu(false);
     }
-  };
+  }, []);
 
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+  }, [handleClickOutside]);
 
   return (
     <div
@@ -63,6 +63,6 @@ const File: React.FC<FileProps> = ({ file, selectedFile, setSelectedFile }) => {
       )}
     </div>
   );
-};
+});
 
 export default File;

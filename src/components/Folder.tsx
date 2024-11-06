@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { FolderType, FileType } from "../types";
 import File from "./File";
 
@@ -8,18 +8,20 @@ interface FolderProps {
   setSelectedFile: (file: FileType | null) => void;
 }
 
-const Folder: React.FC<FolderProps> = ({ folder, selectedFile, setSelectedFile }) => {
+const Folder: React.FC<FolderProps> = React.memo(({ folder, selectedFile, setSelectedFile }) => {
   const [expanded, setExpanded] = useState(false);
 
-  const handleToggle = () => setExpanded(!expanded);
+  const handleToggle = useCallback(() => {
+    setExpanded((prevExpanded) => !prevExpanded);
+  }, []);
 
   return (
     <div className="folder">
       <span onClick={handleToggle} className="folder-icon">
-      📁 {folder.name}
+        📁 {folder.name}
       </span>
 
-      {expanded && (
+      {expanded && folder?.data && (
         <div className="folder-content">
           {folder.data.map((item, index) =>
             item.type === "folder" ? (
@@ -42,6 +44,6 @@ const Folder: React.FC<FolderProps> = ({ folder, selectedFile, setSelectedFile }
       )}
     </div>
   );
-};
+});
 
 export default Folder;

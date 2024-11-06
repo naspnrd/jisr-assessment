@@ -1,44 +1,30 @@
-# Getting Started with File Explorer React App
+# Folder Structure
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and uses React with TypeScript to implement a simple file explorer.
+# Introduction
+- Should use this sort of data to render the files with icons ( optional: use SVG icons from
+Web ).
+- Folders should be expandable, When you left click on a file, it should have some
+active/selected state.
+- On right click on files a popup opens and you should allow copy, deletion and rename of
+the files. ( for now console log the file name and the event.i.e copy, delete, rename )
 
-## Available Scripts
+## Live Demo
 
-In the project directory, you can run:
+View the live demo of the application here 👉 [Folder Structure](https://folder-structure-jisr.netlify.app/).
 
-### `npm start`
+## Technologies Used
 
-Runs the app in development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- React JS
+- TypeScript
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Performance Improvements
 
-### `npm run build`
+- Used `useMemo` hook to avoid re-renders & cache state value.
+- Used `useCallback` hook to prevent redefinition on each render, reducing unnecessary re-renders.
 
-Builds the app for production to the `build` folder.\
-It optimizes the build for the best performance.
+## 👤 **Neeraj Chaudhary**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Linkedin: [Neeraj Chaudhary](https://www.linkedin.com/in/neeraj-chaudhary007/)
+- Github: [@naspnrd](https://github.com/naspnrd)
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However, we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).

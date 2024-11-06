@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { explorerData } from "./data/explorerData";
 import Folder from "./components/Folder";
-import { FileType } from "./types";
+import { FolderType, FileType } from "./types";
+import { explorerData } from "./data/explorerData";
 import "./App.css";
 
 const App: React.FC = () => {
@@ -10,7 +10,7 @@ const App: React.FC = () => {
   return (
     <div className="app">
       <Folder
-        folder={explorerData}
+        folder={explorerData as FolderType}
         selectedFile={selectedFile}
         setSelectedFile={setSelectedFile}
       />
